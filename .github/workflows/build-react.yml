@@ -1,0 +1,39 @@
+name: Build and Deploy React App
+
+on:
+  push:
+    branches:
+      - main  # Replace with the branch you want to trigger the build on
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14  # You can specify the Node.js version you need
+
+      - name: Install Dependencies
+        run: npm install  # Or use yarn if you prefer
+
+      - name: Build React App
+        run: npm run build  # Replace with your build script
+
+      # Optionally, you can deploy the built app to a hosting service like GitHub Pages or Netlify.
+
+      # - name: Deploy to GitHub Pages
+      #   uses: JamesIves/github-pages-deploy-action@3.7.1
+      #   with:
+      #     branch: gh-pages
+      #     folder: build
+
+      # Or, you can deploy to other hosting platforms as needed.
+
+      # - name: Deploy to Netlify
+      #   run: npx netlify-cli deploy --prod
+
